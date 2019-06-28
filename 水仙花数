@@ -1,0 +1,30 @@
+/*水仙花数定义：
+1. 一定是3位数
+2. 每一位的立方，加起来恰好是这个数本身，比如153=1*1*1+5*5*5+3*3*3
+*/
+
+public class Text{
+	public static void main(String[] args){
+		int bit;//个位
+		int tenBit;//十位
+		int hundredBit;//百位
+		int tol;//计算每位的立方
+		
+		for(int i=100; i<=999; i++){
+			
+			bit = i%10;
+			tenBit = i/10%10;
+			hundredBit = i/100;
+			tol = bit*bit*bit + tenBit*tenBit*tenBit + hundredBit*hundredBit*hundredBit;
+			
+			if(tol == i){
+				System.out.println(i);
+			}
+		}
+	} 
+}
+/*在这碰到了两个问题
+1.tol == i写成 tol = i 会报 int无法转化为boolean的错误
+2.匆忙下将for改为了while但是一定要加上break否则会一直循环输出一个值
+因为条件始终满足
+*/
