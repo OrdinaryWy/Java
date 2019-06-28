@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Text{
+	public static void main(String[] args){
+		//假设最小距离为20,先将[1,20]中两个数最大距离作为最小距离
+        double min = 20;
+        //定义一个c,用于存储a/b的商
+        double c = 0;
+        //定义一个cha,用于存储两个数相除所得商与0.618之间的距离的绝对值
+        double cha;
+        //用于存储第一个数,即分子
+        int one = 0;
+        //用于存储第二个数,即分母
+        int two = 0;
+ 
+        //此嵌套循环用于将[1,20]中每个数两两相除,例如1与1到20的每个数除一遍，2与1到20每个数除一遍,以此类推
+        for (int a = 1;a<=20;a++){
+            for (int b = 1;b<=20;b++){
+                //每次相除所得商存在c中
+                c = (double) a/b;
+                //将商值与0.618之差的绝对值存在cha中
+                cha = Math.abs(c-0.618);
+                //将差值cha与最小值min作比较,若cha<min,将cha中的值赋给min,作为新的最小值,下一次计算出的差值与新的最小值作比较
+                if (cha < min){
+                    min = cha;
+                    //每一次取得新的最小值时,将参与此次运算的a与b的值分别存在one与two中
+                    one = a;
+                    two = b;
+                }
+            }
+ 
+        }
+        c = (double) one/two;
+        System.out.println(min);
+        System.out.println(one);
+        System.out.println(two);
+        System.out.println(c);
+        }
+    }
