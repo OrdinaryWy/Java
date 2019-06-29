@@ -1,0 +1,89 @@
+/*打印出杨辉三角形（要求打印出10行如下图）  
+        1 
+        1 1 
+       1 2 1 
+       1 3 3 1 
+      1 4 6 4 1 
+     1 5 10 10 5 1
+*/
+
+//方法一
+/*杨辉三角形性质：
+        每行数字左右对称，由1开始逐渐变大，然后变小，回到1。　　
+        第n行的数字个数为n个。　　
+        第n行数字和为2^(n－1)。　　
+        每个数字等于上一行的左右两个数字之和。可用此性质写出整个杨辉三角形。　　　
+        第n行的第1个数为1，第二个数为1×(n-1)，第三个数为1×(n-1)×（n-2）/2，第四个数为1×(n-1)×（n-2）/2×（n-3）/3…依此类推。　　
+    算法原理：
+        使用一个二维数组yh[][]存储杨辉三角形的数据，行和列的大小为所需要输出的行数Row（本程序中Row为10）。
+        使用for循环使杨辉三角中除了最外层（不包括杨辉三角底边）的数为1 ；
+        使用语句yh[i][j] = yh[i - 1][j - 1] + yh[i - 1][j]使第i行第j列的数据等于第（i-1）行第（j-1）列的数据与第（i-1）行第（j）列的数据之和，
+        即每个数字等于上一行的左右两个数字之和。*/
+
+public class YangHuiTriangle{
+    
+    public static void main(String[] args) {
+ 
+       int[][] a = new int[10][10];
+       for (int i = 0; i < 10; i++) {
+           a[i][i] = 1;
+           a[i][0] = 1;
+       }
+       for (int i = 2; i < 10; i++) {
+           for (int j = 1; j < i; j++) {
+              a[i][j] = a[i - 1][j - 1] + a[i - 1][j];
+           }
+       }
+ 
+       for (int i = 0; i < 10; i++) {
+           for (int k = 0; k < 2 * (10 - i) - 1; k++) {
+              System.out.print(" ");
+           }
+           for (int j = 0; j <= i; j++) {
+              System.out.print(a[i][j] + "   ");
+           }
+           System.out.println();
+       }
+    }
+}
+
+
+
+
+//方法二
+public class PrimeFactor{
+	//在 num() 方法中传入两个参数，即 x 和 y。
+	//其中，x 表示行，y 表示列。
+	//num() 方法用于计算第 x 行第 y 列的数值。
+	public static int num(int x,int y){
+        if(y==1||y==x)
+        {
+             return 1;
+        }
+        int c=num(x-1,y-1)+num(x-1,y);
+        return c;
+    }
+	
+	//创建名称为 calculate 的方法，在该方法中传入一个 int 类型的参数，该参数表示打印杨辉三角形的行数   
+	public static void calculate(int row){
+        for(int i=1;i<=row;i++)
+        {
+            for(int j=1;j<=row-i;j++)
+            {
+                System.out.print(" ");
+            }
+            for(int j=1;j<=i;j++)
+            {   //打印空格后面的字符, 从第1 列开始往后打印
+                System.out.print(num(i,j) +" ");
+            }
+            System.out.println();
+        }
+    }
+	
+	 public static void main(String[] args){
+        Scanner scan=new Scanner(System.in);
+        System.out.print("打印杨辉三角形的行数：");
+        int row=scan.nextInt();
+        calculate(row);
+    }
+}
