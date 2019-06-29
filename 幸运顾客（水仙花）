@@ -1,0 +1,42 @@
+/*超市中开展活动，请输入一位顾客的3位帐单号，如果帐单号的个位、十位、百位数字相加等于10，则为幸运顾客，
+显示顾客的帐单号。如果不是幸运顾客则显示，欢迎下次光顾。（类似于水仙花数算法）*/
+
+
+import java.util.Scanner;
+
+public class PrimeFactor{
+	public static void main(String args[]){
+		int number = 0;//账单号
+		int bit;//个位
+		int tenBit;//十位
+		int hundredBit;//百位
+		int tol = 0;//计算每位的加和
+		boolean b = true;//判断账号是否正确 
+		
+		//判断输入账单号是否正确
+		while(b){
+			Scanner scanner = new Scanner(System.in);
+		    System.out.println("请输入您的账单号：");
+			number = scanner.nextInt();
+			
+			if(number < 100 || number > 999){
+				System.out.println("输入错误，请重新输入");
+			}
+			else{
+				b = false;
+				bit = number % 10;
+				tenBit = number / 10 % 10;
+				hundredBit = number / 100;
+				tol = bit + tenBit + hundredBit;
+			}	
+		}
+			
+		//判断是否为幸运顾客
+		if(tol == 10){
+			System.out.println("您为幸运顾客，您的账单号为："+ number);
+		}
+		else{
+			System.out.println("欢迎下次光顾");
+		}
+	}
+}
