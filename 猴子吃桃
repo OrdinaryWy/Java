@@ -1,0 +1,18 @@
+/*一个猴子第一天在了很多桃子,每天只吃总数的一半加一个, 第10天只剩一个, 问第一天摘了多少个？
+
+Day10: sum = 1
+Day9: sum = (sum+1)*2 = 4   吃了 3
+Day8: sum = (sum+1)*2 = 10  吃了 6
+…
+Day1: sum = (sum+1)*2*/
+
+public class PrimeFactor{
+	public static void main(String args[]){
+		int sum = 1;//第十天所剩桃子数
+	
+		for(int i = 0; i < 9; i++){
+			sum = (sum+1)*2;
+		}
+		System.out.println(sum);
+	}
+}
