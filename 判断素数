@@ -10,17 +10,19 @@ public class Prime{
 		
 		for(int i = 101; i <= 200; i++){
 			for(int j = 2; j <= Math.sqrt(i); j++){
-				if(i%j == 0){
+				if(i % j == 0){
 					b = false;//不是素数
 					break;
 				}
-				
-				if(b){
-					count++;
-				}
 			}
+			
+			if(b){        //这句是在i循环里面的注意
+				count++;
+				System.out.print(i + " ");
+			}
+			
 		}
-		
-		System.out.println("素数个数为：" + count);
+		System.out.println("\n素数个数为：" + count);
 	}
 }
+
