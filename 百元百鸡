@@ -1,0 +1,22 @@
+/*实现百元买百鸡的问题：
+现在你手头有100元钱，要用这些钱来买100只鸡，公鸡3元一只，母鸡2元一只，小鸡0.5元一只*/
+
+public class PrimeFactor{
+	public static void main(String args[]){
+		int hen ;//公鸡
+		int cock ;//母鸡
+		double chick ;//小鸡
+		
+		for(hen = 0; hen <= 33; hen++){     //备注：即使上面定义变量时hen赋值过，for循环也不能缺省第一个条件，
+                                        //不报错，只是没输出
+			for(cock = 0;cock <= 50; cock++ ){
+					chick = 100 - hen - cock;
+					if((3*hen+2*cock+0.5*chick)==100){
+						System.out.println("hen:"+hen+"\tcock:"+cock+"\tchick:"+chick);
+					}
+				
+			}
+		}
+	}
+	
+}
