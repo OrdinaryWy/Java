@@ -1,0 +1,84 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Text{
+	public static void main(String args[]){
+		//boolean b = true;
+		System.out.println("欢迎您参见石头、剪刀、布游戏！");
+		
+		while(true){
+			System.out.println("请选择（1,2,3）");
+			System.out.println("1.石头");
+			System.out.println("2.剪刀");
+			System.out.println("3.布");
+		
+			Scanner scanner = new Scanner(System.in);
+			System.out.print("选择：");
+			int num;//玩家输入数字
+			num = scanner.nextInt();
+			System.out.println("\n");
+			Random rand=new Random();
+			int number=rand.nextInt(3);//电脑产生0~3的随机数
+		    if(number == 0) {
+		    	number = 3;
+		    }
+		
+			System.out.print("电脑出拳为：");
+			switch(number){
+				case 1:
+				System.out.println("石头");
+				break;
+			
+				case 2:
+				System.out.println("剪刀");
+				break;
+			
+				case 3:
+				System.out.println("布");
+				break;
+				
+				default:
+			}
+		
+			System.out.print("您出拳为：");
+			switch(num){
+				case 1:
+				System.out.println("石头");
+				break;
+			
+				case 2:
+				System.out.println("剪刀");
+				break;
+			
+				case 3:
+				System.out.println("布");
+				break;
+				
+				default:
+			}
+		
+			if(number == num){
+				System.out.println("平局！");
+			}
+			else if((num == 1 && number == 2) || (num == 2 && number == 3) || (num == 3 && number == 1)){
+				System.out.println("您赢了！");
+			}
+			else if((num == 1 && number == 3) || (num == 2 && number == 1) || (num == 3 && number == 2)){
+				System.out.println("您输了！");
+			}
+		
+			System.out.print("继续玩吗?");
+			String s = scanner.next();
+		
+			if(s.equals("y")){
+				System.out.println("\n");
+				continue;
+			}
+			else{
+				break;
+			}
+			
+			//scanner.close();
+		}
+	}
+}
