@@ -1,0 +1,16 @@
+/*若一个数能表示成某个整数的平方的形式，则称这个数为完全平方数。
+ * 一个整数，它加上100后是一个完全平方数，再加上168又是一个完全平方数，请问该数是多少？
+ */
+
+public class Text{
+	
+	public static void main(String args[]){	
+		for(int l = 1; l < 1000; l++) {
+			if(Math.sqrt((long)l + 100) % 1 == 0)
+				if(Math.sqrt((long)l + 168) % 1 == 0) {
+					System.out.println(l+"加100或加168后均是完全平方数");
+				}
+		}
+		
+	}
+}
