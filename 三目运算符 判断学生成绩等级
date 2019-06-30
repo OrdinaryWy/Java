@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Text{
+	public int compare(double grade) {
+		return grade > 90 ? 1 : grade > 60 ? 2 : 3;
+	}
+	
+	public static void main(String args[]){	
+		System.out.println("请输入学生成绩：");
+		Scanner scanner = new Scanner(System.in);
+		double grade = scanner.nextDouble();//学生成绩
+		
+		Text student = new Text();
+		int level = student.compare(grade);//成绩等级
+		switch(level) {
+			case 1:
+			System.out.println("A");
+			break;
+			
+			case 2:
+			System.out.println("B");
+			break;
+			
+			case 3:
+			System.out.println("C");
+			break;
+			
+			default:
+			
+		}
+		
+		scanner.close();
+		
+		
+	}
+}
