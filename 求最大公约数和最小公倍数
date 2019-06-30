@@ -1,0 +1,52 @@
+/*在循环中，只要除数不等于0，用较大数除以较小的数，将小的一个数作为下一轮循环的大数，
+取得的余数作为下一轮循环的较小的数，如此循环直到较小的数的值为0，返回较大的数，
+此数即为最小公约数，最小公倍数为两数之积除以最大公约数*/
+
+import java.util.Scanner;
+
+public class Text{
+	static int m;
+	static int n;
+	
+	//保证m为大值
+	public static void sort(int m, int n) {
+		int temp;
+		if(m < n) {
+			temp = m;
+			m = n;
+			n = temp;
+		}
+	
+	}
+	
+	//求最大公约数
+	public static int greatestCommonDivisor(int m, int n) {
+		sort(m, n);
+		
+		while(n != 0) {
+			int temp;
+			temp = n;
+			n = m % n;
+			m = temp;
+		}
+		return m;	
+	}
+	
+	//求最小公倍数
+	public static int minimumCommonMultiple(int m, int n) {
+		return m*n/greatestCommonDivisor(m, n) ;		
+	}
+	
+	public static void main(String args[]){	
+		Scanner scanner = new Scanner(System.in); 
+		System.out.println("请输入m:");
+		m = scanner.nextInt();
+		
+		System.out.println("请输入n:");
+		n = scanner.nextInt();
+		
+		System.out.println("最大公约数为："+ greatestCommonDivisor(m, n));
+		System.out.println("最小公倍数为"+ minimumCommonMultiple(m, n) );
+		
+	}
+}
