@@ -1,0 +1,81 @@
+public class Text{
+	//合并数组
+  //方法的返回值可以是数组
+	public static int[] merge(int[] array1, int[] array2) {
+		int[] array3 = new int[array1.length + array2.length];
+		System.arraycopy(array1, 0, array3, 0, array1.length);
+		System.arraycopy(array2, 0, array3, array1.length, array2.length);
+		return array3;
+	}
+	
+	//打印数组
+	public static void printArray(int[] array) {
+		for(int each : array) {
+			System.out.print(each + " ");
+		}
+		System.out.println();
+	}
+	
+	//初始化数组
+	public static void initializeArray(int[] array) {
+		for(int i = 0; i < array.length; i++){
+			array[i] = (int)(Math.random()*100);
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		int[] a = new int[(int)(Math.random()*5)+5];
+		int[] b = new int[(int)(Math.random()*5)+5];
+		
+		System.out.println("数组a的内容：");
+		initializeArray(a);
+		printArray(a);
+		
+		
+		System.out.println("数组b的内容：");
+		initializeArray(b);
+		printArray(b);
+		
+		//输出合并后的数组
+		System.out.println("数组c的内容：");
+		printArray(merge(a, b));
+		
+	}
+	
+	
+}
+
+
+
+/*public class Text{
+	public static void main(String[] args) {
+		int[] a = new int[(int)(Math.random()*5)+5];
+		int[] b = new int[(int)(Math.random()*5)+5];
+		int[] c = new int[a.length + b.length];
+		
+		System.out.println("数组a的内容：");
+		for(int i = 0; i < a.length; i++){
+			a[i] = (int)(Math.random()*100);
+			System.out.print(a[i] + " ");
+		}
+		System.out.println();
+		
+		System.out.println("数组b的内容：");
+		for(int i = 0; i < b.length; i++) {
+			b[i] = (int)(Math.random()*100);
+			System.out.print(b[i] + " ");
+		}
+		System.out.println();
+		
+		System.arraycopy(a, 0, c, 0, a.length);
+		System.arraycopy(b, 0, c, a.length, b.length);
+		System.out.println("数组c的内容：");
+		for(int each : c) {
+			System.out.print(each + " ");
+		}
+		
+	}
+	
+	
+}*/
